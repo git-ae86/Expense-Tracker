@@ -2,6 +2,8 @@ const signup=document.querySelector("#signUp")
 const login=document.querySelector("#signIn")
 
 
+
+
 var data = JSON.parse(localStorage.getItem("user"));
 console.log(data);
 login.addEventListener("click",() => {

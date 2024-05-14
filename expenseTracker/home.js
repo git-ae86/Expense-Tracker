@@ -11,6 +11,12 @@ const exp = document.querySelector("#exp");
 const trans = document.querySelector("#trans");
 
 const hist = document.querySelector(".history")
+const logout=document.querySelector("#outer");
+const tax=document.querySelector("#taxer");
+
+var userData = JSON.parse(localStorage.getItem("currUser"));
+var Name = userData.fName;
+console.log(Name);
 
 let income = [];
 let expense = [];
@@ -270,79 +276,183 @@ function barMaker() {
     });
 }
 
-const ai = document.getElementById("ai");
-        const aipromt = document.getElementById("aiprompt");
-        const geminiInput = document.getElementById("geminiInput");
-        const geminiButton = document.getElementById("geminiButton");
-        const middleContainer = document.getElementById("middleContainer");
-        const aiContainer = document.getElementById("aiContainer");
+const askAi=document.querySelector("#AskAi");
 
-        import { GoogleGenerativeAI } from "@google/generative-ai";
-
-        import { HarmBlockThreshold, HarmCategory } from "@google/generative-ai";
+const AiKotoba = document.querySelector("#AiChat");
+const UserInp = document.querySelector("#AiInput");
+const send = document.querySelector("#send");
+const advice = document.querySelector("#advice");
+const exit=document.querySelector("#close");
 
 
-        const genAI = new GoogleGenerativeAI("AIzaSyDO1vxwfZ0JZE3S_d0BYEm3mUT-fe_vJ40");
+import { GoogleGenerativeAI } from "@google/generative-ai";
+import { HarmBlockThreshold, HarmCategory } from "@google/generative-ai";
+let conversationHistory = [ {
+    role: "user",
+    parts: [{ text: "Introduce yourself as Waifu-chan who can help with your expense tracking. Also act like a cute waifu and try to be funny.Also try to use ara ara in your sentence whenever it is applicable. Also call me "+Name+"-san" }],
+},
+{
+    role: "model",
+    parts: [{ text: "Ara ara, "+Name+" My name is Waifu-chan, and I'm here to help you with your expense tracking! You know, it's important to keep track of your money. That way, you won't end up spending it all on dango and end up broke! I can help you categorize your expenses, create budgets, and even generate reports. I'm also super easy to use! Just tell me what you need, and I'll take care of the rest. So, what are you waiting for? Let's get started on tracking your expenses together! I promise to make it fun!" }],
+},];
+AiKotoba.innerHTML="Ara ara, "+Name+"-san! My name is Waifu-chan, and I'm here to help you with your expense tracking! You know, it's important to keep track of your money. That way, you won't end up spending it all on dango and end up broke! I can help you categorize your expenses, create budgets, and even generate reports. I'm also super easy to use! Just tell me what you need, and I'll take care of the rest. So, what are you waiting for? Let's get started on tracking your expenses together! I promise to make it fun!";
 
-        async function run(prompt) {
-            const safetySettings = [
-                {
-                    category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-                    threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
-                },
-                {
-                    category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-                    threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
-                },
-                {
-                    category: HarmCategory.HARM_CATEGORY_HARASSMENT,
-                    threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
-                },
-                {
-                    category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-                    threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
-                },
+const genAI = new GoogleGenerativeAI("AIzaSyDO1vxwfZ0JZE3S_d0BYEm3mUT-fe_vJ40");
+async function run(prompt) {
+    const safetySettings = [
+        {
+            category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+            threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
+        },
+        {
+            category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+            threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
+        },
+        {
+            category: HarmCategory.HARM_CATEGORY_HARASSMENT,
+            threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
+        },
+        {
+            category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+            threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
+        },
+    ];
 
+    const model = genAI.getGenerativeModel({ model: "gemini-pro", safetySettings });
+    // const chat = model.startChat({
+        // history: [
+            // {
+            //     role: "user",
+            //     parts: [{ text: "Hello, I have 2 dogs in my house." }],
+            // },
+            // {
+            //     role: "model",
+            //     parts: [{ text: "Ara ara, Nanao-san! My name is Waifu-chan, and I'm here to help you with your expense tracking! You know, it's important to keep track of your money. That way, you won't end up spending it all on dango and end up broke! I can help you categorize your expenses, create budgets, and even generate reports. I'm also super easy to use! Just tell me what you need, and I'll take care of the rest. So, what are you waiting for? Let's get started on tracking your expenses together! I promise to make it fun!" }],
+            // },
 
-            ];
+        // ],
+    //     generationConfig: {
+    //         maxOutputTokens: 100,
+    //     },
+    // });
 
-            const model = genAI.getGenerativeModel({ model: "gemini-pro", safetySettings });
-
-            const chat = model.startChat({
-                history: [
-                    {
-                        role: "user",
-                        parts: [{ text: "Hello, I have 2 dogs in my house." }],
-                    },
-                    {
-                        role: "model",
-                        parts: [{ text: "Great to meet you. What would you like to know?" }],
-                    },
-
-                ],
-                generationConfig: {
-                    maxOutputTokens: 100,
-                },
-            });
-
-            geminiButton.addEventListener("click", async () => {
-                let prompt = geminiInput.value;
-                const result = await chat.sendMessage(prompt);
-                const response = await result.response;
-                const text_ = response.text();
-                console.log(text_);
-                middleContainer.innerHTML = "";
-                let plainText = text_
-                    .replace(/\*\*(.*?)\*\*/g, "$1")
-                    .replace(/\*(.*?)\*/g, "$1");
-                middleContainer.innerHTML = `<pre>${plainText}</pre>`;
-
-
-            });
+    send.addEventListener("click", async () => {
+        if (UserInp.value.length < 4) {
+            return;
         }
-        run();
-
+        AiKotoba.innerHTML = "Thinking...";
+        let userMessage = UserInp.value;
+        try{
+        const chat = model.startChat({
+            history: conversationHistory,
+            generationConfig: {
+                maxOutputTokens: 250,
+            },
+        });
         
+        const result = await chat.sendMessage(userMessage);
+        console.log("here");
+        console.log(result);
+        const response = await result.response;
+        console.log("here2");
+        console.log(response);
+        const text_ = response.text();
+        console.log("here3");
+        console.log(text_);
+        console.log(text_);
+        AiKotoba.innerHTML = "";
+        
+        AiKotoba.innerHTML =text_;
+        conversationHistory.push({ role: "user", parts: [{ text: userMessage }] });
+        UserInp.value = "";
+        conversationHistory.push({ role: "model", parts: [{ text: text_ }] });
+    }
+    catch(error){
+        AiKotoba.innerHTML ="Sorry please reload the website"
+    }
 
+    });
+    advice.addEventListener("click", async () => {
+        AiKotoba.innerHTML = "Thinking...";
+        let userMessage =`My total income ₹${totalInc} and my expenses are ₹${totalExp} please give me advice for money management`;
+        try{
+        const chat = model.startChat({
+            history: conversationHistory,
+            generationConfig: {
+                maxOutputTokens: 400,
+            },
+        });
+        
+        const result = await chat.sendMessage(userMessage);
+        console.log("here");
+        console.log(result);
+        const response = await result.response;
+        console.log("here2");
+        console.log(response);
+        const text_ = response.text();
+        console.log("here3");
+        console.log(text_);
+        console.log(text_);
+        AiKotoba.innerHTML = "";
+        
+        AiKotoba.innerHTML =text_;
+        conversationHistory.push({ role: "user", parts: [{ text: userMessage }] });
+        UserInp.value = "";
+        conversationHistory.push({ role: "model", parts: [{ text: text_ }] });
+    }
+    catch(error){
+        AiKotoba.innerHTML ="Sorry please reload the website"
+    }
+
+    });
+    
+
+}
+run();
+
+exit.addEventListener("click",()=>{
+    document.querySelector(".pop").style.display = "none";
+})
+document.querySelector("#close2").addEventListener("click",()=>{
+    document.querySelector(".pop2").style.display = "none";
+})
+askAi.addEventListener("click",()=>{
+    document.querySelector(".pop").style.display = "block";
+})
+logout.addEventListener("click",()=>{
+    localStorage.removeItem("currUser");
+    window.location.href = "../docs/index.html";
+})
+tax.addEventListener("click",()=>{
+    let taxRate;
+    if (totalInc >= 1500000) {
+        taxRate = 0.3;
+    } else if (totalInc >= 1200000) {
+        taxRate = 0.20;
+    } else if (totalInc >= 600000) {
+        taxRate = 0.1;
+    }else if (totalInc >= 500000) {
+        taxRate = 0.05;
+    }else if (totalInc >= 300000) {
+        taxRate = 0.05;
+    }
+     else {
+        taxRate = 0;
+    }
+
+    let taxesDue = totalInc * taxRate;
+    document.querySelector(".pop2").style.display = "block";
+    document.querySelector("#AiChat2").innerHTML=  `With great rupees comes great responsibility... to pay taxes! Don't worry, Waifu-chan will explain everything in a way that even a sleepy kitten could understand<br> 
+    Here's the lowdown on those pesky taxes: <br>
+    •	Less than ₹3 lakh? Lucky you! No taxes for you!  Go treat yourself to some mochi!,<br>
+    •	₹3 lakh to ₹5 lakh? Only a tiny 5% goes to the taxman! That's like sharing one bite of your favorite dango!<br>
+    •	₹5 lakh to ₹6 lakh? Still just a little 5% nibble! You're a master of money management!<br> 
+    •	₹6 lakh to ₹9 lakh? Okay, now it's getting a bit more serious... 10%! But you're still a high roller!<br> 
+    •	₹9 lakh to ₹12 lakh? 15% tax time! But think of all the good you're doing for India!<br> 
+    •	₹12 lakh to ₹15 lakh? 20% now, but your bank account is still looking healthy!<br> 
+    •	Above ₹15 lakh? Woah! You're a super-rich Goshujin-sama! 30% goes to taxes, but you're still on top of the world!<br><br>
+    For your total income of ₹${totalInc}, the Total due Tax is ₹${taxesDue}
+    `
+})
 
 

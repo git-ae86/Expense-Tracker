@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="home.css">
     <style>
         .pop {
-            display: block;
+            display: none;
             position: fixed;
             z-index: 3;
             left: 0;
@@ -33,24 +33,80 @@
             height: 80%;
             color: white;
         }
+
+        .pop2 {
+            display: none;
+            position: fixed;
+            z-index: 3;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content2 {
+            background-color: #0d6efd0d;
+            margin: 7% auto;
+            border: 1px solid #888;
+            width: 90%;
+            height: 80%;
+            color: white;
+        }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <title>Expense Tracker</title>
 </head>
 
 <body>
+    <script src="https://js.instamojo.com/v1/checkout.js"></script>
+    <script>
+        /* Start client-defined Callback Handler Functions */
+        function onOpenHandler() {
+            alert('Payments Modal is Opened');
+        }
 
+        function onCloseHandler() {
+            alert('Payments Modal is Closed');
+        }
+
+        function onPaymentSuccessHandler(response) {
+            alert('Payment Success');
+            console.log('Payment Success Response', response);
+        }
+
+        function onPaymentFailureHandler(response) {
+            alert('Payment Failure');
+            console.log('Payment Failure Response', response);
+        }
+        /* End client-defined Callback Handler Functions */
+
+        /* Configuring Handlers */
+        Instamojo.configure({
+            handlers: {
+                onOpen: onOpenHandler,
+                onClose: onCloseHandler,
+                onSuccess: onPaymentSuccessHandler,
+                onFailure: onPaymentFailureHandler
+            }
+        });
+
+        function onButtonClick() {
+            Instamojo.open('https://test.instamojo.com/@satan999/');
+        }
+    </script>
     <nav class="flex justify-around p-[1vh] text-lg fixed top-0 w-[100%] bg-[lightcyan]" style="z-index:2">
         <button class="hv"><a href="#here">Charts</a></button>
         <!-- <a  href="#here" class="hv" id="chartMaker">Chart</a> -->
         <button class="hv"><i class="fa-solid fa-house"></i><a href="#beginning">Home</a> </button>
-        <div class="hv">
+        <div class="hv" id="AskAi">
             <div class="img h-[9vh] w-[4.6vw] rounded-full bg-gray-700">
                 <img src="../images/normal.jpg" alt="" class="h-[100%] w-[100%] rounded-full object-cover">
             </div>
             <p class="text-xs text-center">Ask AI</p>
         </div>
-        <button class="hv">LogOut</button>
+        <button class="hv" id="outer">LogOut</button>
     </nav>
     <div id="beginning" style="position: absolute; top:0;z-index: -1;"></div>
     <div class="pop">
@@ -58,18 +114,35 @@
             <div class="flex">
                 <div id="AiImg" class="pic h-[15vh] w-[9.5vw] rounded-full m-[1vw]"><img src="../images/home.gif" alt=""
                         class="w-[100%] h-[100%] rounded-full"></div>
-                <div id="AiChat" class="bg-zinc-900 text-white w-[100%] p-[1vh]  rounded-lg h-[46vh] mb-[4vh]"></div>
+                <div id="AiChat"
+                    class="bg-zinc-900 text-white w-[100%] p-[1vh]  rounded-lg h-[46vh] mb-[4vh] overflow-y-scroll">
+                </div>
             </div>
             <div class="flex">
-                <button id="advice" class="w-[13%] p-[1vh] border m-[1vh] bg-[#001861] rounded-lg">Send income/expense data to get financial advice</button>
-                <textarea name="" id="AiInput" cols="10" rows="4"
-                    class="w-[100%] rounded-xl text-black p-[1vh]"></textarea>
+                <button id="advice" class="w-[13%] p-[1vh] border m-[1vh] bg-[#001861] rounded-lg">Send income/expense
+                    data to get financial advice</button>
+                <textarea id="AiInput" cols="10" rows="4" class="w-[100%] rounded-xl text-black p-[1vh]"></textarea>
                 <br>
             </div>
-                <div class="flex justify-around">
-                    <button id="send" class="p-[1vh] border m-[1vh]">Send</button>
-                    <button id="close" class="p-[1vh] border m-[1vh]">Close</button>
+            <div class="flex justify-around">
+                <button id="send" class="p-[1vh] border m-[1vh]">Send</button>
+                <button id="close" class="p-[1vh] border m-[1vh]">Close</button>
+            </div>
+        </div>
+    </div>
+    <div class="pop2">
+        <div class="modal-content2 p-[3vh]">
+            <div class="flex">
+                <div id="AiImg2" class="pic h-[15vh] w-[9.5vw] rounded-full m-[1vw]"><img src="../images/tax.gif" alt=""
+                        class="w-[100%] h-[100%] rounded-full"></div>
+                <div id="AiChat2"
+                    class="bg-zinc-900 text-white w-[100%] p-[1vh]  rounded-lg h-[46vh] mb-[4vh] overflow-y-scroll">
                 </div>
+            </div>
+            <div class="flex justify-around">
+                <button id="send2" class="p-[1vh] border m-[1vh]" onclick="onButtonClick()">Pay</button>
+                <button id="close2" class="p-[1vh] border m-[1vh]">Close</button>
+            </div>
         </div>
     </div>
     <main class="mt-[24vh] mx-[8vw]">
