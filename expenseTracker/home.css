@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+}
+.history{
+    box-shadow: 0px 8px 16px lightskyblue;
+}
+.hv:hover,.cross:hover {
+    cursor: pointer;
+    color: red;
+}
+.history{
+    overflow-y: scroll;
+}
+.hover-button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    padding: 1vh;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.hover-button:hover {
+    background-color: #45a049; /* Darker Green */
+}
+#chartCanvas {
+    border: 1px solid #ccc;
+  border-radius:80px; 
+}

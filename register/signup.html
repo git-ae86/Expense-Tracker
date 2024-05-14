@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        display: flex;
+        background-color: #d3cece;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+    }
+
+    main {
+        height: 90vh;
+        width: 85vw;
+        background: white;
+        display: flex;
+        font-size: large;
+        font-weight: 500;
+    }
+
+    main .form {
+        padding-top: 3%;
+        width: 55%;
+    }
+
+    main .pic {
+        width: 45%;
+    }
+
+    main .pic img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .Btns {
+        margin-top: 25px;
+        display: flex;
+        margin-right: 140px;
+        justify-content: space-around;
+    }
+
+    .Btn {
+        background-color: #49bda3;
+        color: white;
+        border: none;
+        height: 40px;
+        width: 120px;
+        border-radius: 5px;
+        font-size: 14px;
+        cursor: pointer;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .Btn:hover {
+        cursor: pointer;
+        background-color: #3f9f8a;
+        transition: 0.3s ease;
+    }
+    .shadowC{
+        box-shadow:1px 1px 1px 1px #aeb4b2;
+    }
+</style>
+
+<body>
+    <main>
+        <div class="form">
+            <form>
+            <h1 class="text-center text-[2.5rem] mb-[2vh] font-semibold">Expense Tracker </h1>
+            <h2 class="text-center text-[2rem] mb-[6vh]">Sign Up</h2>
+            <div class="ml-[20%] mb-[1.7vh]">
+                <label for="fname">First Name</label><br>
+                <input type="text" name="fname" id="fname" class="inputElements  border border-[#aeb4b2] w-[80%]">
+                <br>
+            </div>
+            <div class="ml-[20%] mb-[1.7vh]">
+                <label for="lname">Last Name</label><br>
+                <input type="text" name="lname" id="lname" class="inputElements border border-[#aeb4b2] w-[80%]">
+                <br>
+            </div>
+            <div class="ml-[20%] mb-[1.7vh]">
+                <label for="email">Email</label><br>
+                <input type="email" name="email" id="email" class="inputElements border border-[#aeb4b2] w-[80%]">
+                <br>
+            </div>
+
+            <div class="ml-[20%] mb-[1.7vh]">
+                <label for="password">Password</label><br>
+                <input type="password" name="password" id="pass" class="inputElements border border-[#aeb4b2] w-[80%]">
+                <br>
+            </div>
+
+            <div class="ml-[20%] mb-[1.7vh]">
+                <label for="cpass">Confirm Password</label><br>
+                <input type="password" name="cpassword" id="cpass" class="inputElements border border-[#aeb4b2] w-[80%]">
+                <br>
+            </div>
+
+            <div class="Btns ml-[20%] mt-[8%]">
+                <input type="button" value="REGISTER" id="reg" class="Btn">
+                <input type="button" value="LOGIN" id="login" class="Btn">
+            </div>
+        </form>
+        </div>
+        <div class="pic">
+            <img src="../images/authencation.jpeg" alt="">
+        </div>
+
+        <script src="signup.js"></script>
+    </main>
+</body>
+
+</html>

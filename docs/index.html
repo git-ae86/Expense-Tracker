@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        display: flex;
+        background-color: #d3cece;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+    }
+
+    main {
+        height: 90vh;
+        width: 85vw;
+        background: white;
+        display: flex;
+        font-size: large;
+        font-weight: 500;
+    }
+
+    main .form {
+        padding-top: 7%;
+        width: 55%;
+    }
+
+    main .pic {
+        width: 45%;
+    }
+
+    main .pic img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+    .Btns{
+    margin-top: 25px;
+    display: flex;
+    margin-right: 140px;
+    justify-content: space-around;
+}
+
+.Btn{
+    background-color:#49bda3;
+    color: white;
+    border: none;
+    height: 40px;
+    width: 120px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.Btn:hover{
+    cursor: pointer;
+    background-color:#3f9f8a;
+    transition: 0.3s ease;
+}
+</style>
+
+<body>
+    <main>
+        <div class="form">
+            <h1 class="text-center text-[3rem] mb-[2vh] font-semibold">Expense Tracker</h1>
+            <h2 class="text-center text-[2rem] mb-[6vh]">Login</h2>
+            <div class="ml-[20%] mb-[2vh]">
+                <label for="mail">Email</label><br>
+                <input type="email" name="email" id="mail" class="inputElements border border-[#aeb4b2] w-[80%]">
+                <br>
+            </div>
+
+            <div class="ml-[20%]">
+                <label for="pass">Password</label><br>
+                <input type="password" name="password" id="pass" class="inputElements border border-[#aeb4b2] w-[80%]">
+                <br>
+            </div>
+
+
+            <div class="Btns ml-[20%] mt-[8%]">
+                <input type="button" value="Login" id="signIn" class="Btn">
+                <input type="button" value="Sign Up" id="signUp" class="Btn">
+            </div>
+        </div>
+        <div class="pic">
+            <img src="../images/authencation.jpeg" alt="">
+        </div>
+
+        <script src="index.js"></script>
+    </main>
+</body>
+
+</html>
