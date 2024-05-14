@@ -282,16 +282,7 @@ const ai = document.getElementById("ai");
         import { HarmBlockThreshold, HarmCategory } from "@google/generative-ai";
 
 
-        // Fetch your API_KEY
-        const API_KEY = "AIzaSyDO1vxwfZ0JZE3S_d0BYEm3mUT-fe_vJ40";
-
-        // Access your API key (see "Set up your API key" above)
-        const genAI = new GoogleGenerativeAI(API_KEY);
-
-        // ...
-
-
-
+        const genAI = new GoogleGenerativeAI("AIzaSyDO1vxwfZ0JZE3S_d0BYEm3mUT-fe_vJ40");
 
         async function run(prompt) {
             const safetySettings = [
@@ -351,50 +342,7 @@ const ai = document.getElementById("ai");
         }
         run();
 
-        // run("hello");
-
-
-
-        // {
-        //         category: HarmCategory.HARM_CATEGORY_HARASSMENT,
-        //         threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
-        //     },
-        //     {
-        //         category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-        //         threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
-        //     },
-        //     {
-        //         category: HarmCategory.HARM_CATEGORY_DANGEROUS,
-        //         threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
-        //     },
-        //     {
-        //         category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-        //         threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
-        //     },
-        //     {
-        //         category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-        //         threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
-        //     },
-        //     {
-        //         category: HarmCategory.HARM_CATEGORY_DEROGATORY,
-        //         threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
-        //     },
-        //     {
-        //         category: HarmCategory.HARM_CATEGORY_TOXICITY,
-        //         threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
-        //     },
-        //     {
-        //         category: HarmCategory.HARM_CATEGORY_VIOLENCE,
-        //         threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
-        //     },
-        //     {
-        //         category: HarmCategory.HARM_CATEGORY_SEXUAL,
-        //         threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
-        //     },
-        //     {
-        //         category: HarmCategory.HARM_CATEGORY_MEDICAL,
-        //         threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
-        //     }
+        
 
 
 

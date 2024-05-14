@@ -29,7 +29,7 @@
             background-color: #0d6efd0d;
             margin: 7% auto;
             border: 1px solid #888;
-            width: 30%;
+            width: 90%;
             height: 80%;
             color: white;
         }
@@ -46,7 +46,7 @@
         <button class="hv"><i class="fa-solid fa-house"></i><a href="#beginning">Home</a> </button>
         <div class="hv">
             <div class="img h-[9vh] w-[4.6vw] rounded-full bg-gray-700">
-                <img src="../images/normal.jpg" alt="" class="h-[100%] w-[100%] rounded-full">
+                <img src="../images/normal.jpg" alt="" class="h-[100%] w-[100%] rounded-full object-cover">
             </div>
             <p class="text-xs text-center">Ask AI</p>
         </div>
@@ -54,8 +54,22 @@
     </nav>
     <div id="beginning" style="position: absolute; top:0;z-index: -1;"></div>
     <div class="pop">
-        <div class="modal-content">
-            jsks
+        <div class="modal-content p-[3vh]">
+            <div class="flex">
+                <div id="AiImg" class="pic h-[15vh] w-[9.5vw] rounded-full m-[1vw]"><img src="../images/home.gif" alt=""
+                        class="w-[100%] h-[100%] rounded-full"></div>
+                <div id="AiChat" class="bg-zinc-900 text-white w-[100%] p-[1vh]  rounded-lg h-[46vh] mb-[4vh]"></div>
+            </div>
+            <div class="flex">
+                <button id="advice" class="w-[13%] p-[1vh] border m-[1vh] bg-[#001861] rounded-lg">Send income/expense data to get financial advice</button>
+                <textarea name="" id="AiInput" cols="10" rows="4"
+                    class="w-[100%] rounded-xl text-black p-[1vh]"></textarea>
+                <br>
+            </div>
+                <div class="flex justify-around">
+                    <button id="send" class="p-[1vh] border m-[1vh]">Send</button>
+                    <button id="close" class="p-[1vh] border m-[1vh]">Close</button>
+                </div>
         </div>
     </div>
     <main class="mt-[24vh] mx-[8vw]">
