@@ -5,6 +5,10 @@
     font-family: "Open Sans", sans-serif;
     font-weight: 400;
 }
+html{
+    scroll-behavior: smooth;
+}
+
 .history{
     box-shadow: 0px 8px 16px lightskyblue;
 }
@@ -31,7 +35,23 @@
 .hover-button:hover {
     background-color: #45a049; /* Darker Green */
 }
+.hover-button1 {
+    background-color: #afad4c; /* Green */
+    border: none;
+    padding: 1vh;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.hover-button1:hover {
+    background-color: #6b6e2b; /* Darker Green */
+}
 #chartCanvas {
     border: 1px solid #ccc;
-  border-radius:80px; 
+    border-radius:80px; 
 }
