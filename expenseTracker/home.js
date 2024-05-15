@@ -172,6 +172,8 @@ function propLine() {
     ctx.fillRect(xBarWidth, 0, yBarWidth, canvas.height);
     // ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
+
+
 const barColors = ["#32CD32", "#FF0000"];
 function pieMaker() {
     if (Chartt != undefined) {
@@ -327,7 +329,7 @@ async function run(prompt) {
             // },
             // {
             //     role: "model",
-            //     parts: [{ text: "Ara ara, Nanao-san! My name is Waifu-chan, and I'm here to help you with your expense tracking! You know, it's important to keep track of your money. That way, you won't end up spending it all on dango and end up broke! I can help you categorize your expenses, create budgets, and even generate reports. I'm also super easy to use! Just tell me what you need, and I'll take care of the rest. So, what are you waiting for? Let's get started on tracking your expenses together! I promise to make it fun!" }],
+            //     parts: [{ text:"" }],
             // },
 
         // ],
@@ -338,6 +340,7 @@ async function run(prompt) {
 
     send.addEventListener("click", async () => {
         if (UserInp.value.length < 4) {
+            AiKotoba.innerHTML = "Try again";
             return;
         }
         document.getElementById("Ai").src="../images/home.gif";
@@ -376,6 +379,7 @@ async function run(prompt) {
     });
     advice.addEventListener("click", async () => {
         AiKotoba.innerHTML = "Thinking...";
+        document.getElementById("Ai").src="../images/home.gif";
         let userMessage =`My total income ₹${totalInc} and my expenses are ₹${totalExp} please give me advice for money management`;
         try{
         const chat = model.startChat({
@@ -401,6 +405,7 @@ async function run(prompt) {
         conversationHistory.push({ role: "user", parts: [{ text: userMessage }] });
         UserInp.value = "";
         conversationHistory.push({ role: "model", parts: [{ text: text_ }] });
+        document.getElementById("Ai").src="../images/chat.gif";
     }
     catch(error){
         AiKotoba.innerHTML ="Sorry please reload the website"
@@ -427,22 +432,22 @@ logout.addEventListener("click",()=>{
 })
 tax.addEventListener("click",()=>{
     let taxRate;
-    if (totalInc >= 1500000) {
+    if (totalInc+totalExp >= 1500000) {
         taxRate = 0.3;
-    } else if (totalInc >= 1200000) {
+    } else if (totalInc+totalExp >= 1200000) {
         taxRate = 0.20;
-    } else if (totalInc >= 600000) {
+    } else if (totalInc+totalExp >= 600000) {
         taxRate = 0.1;
-    }else if (totalInc >= 500000) {
+    }else if (totalInc+totalExp >= 500000) {
         taxRate = 0.05;
-    }else if (totalInc >= 300000) {
+    }else if (totalInc+totalExp >= 300000) {
         taxRate = 0.05;
     }
      else {
         taxRate = 0;
     }
 
-    let taxesDue = totalInc * taxRate;
+    let taxesDue = (totalInc+totalExp) * taxRate;
     document.querySelector(".pop2").style.display = "block";
     document.querySelector("#AiChat2").innerHTML=  `With great rupees comes great responsibility... to pay taxes! Don't worry, Waifu-chan will explain everything in a way that even a sleepy kitten could understand<br> 
     Here's the lowdown on those pesky taxes: <br>
@@ -453,7 +458,7 @@ tax.addEventListener("click",()=>{
     •	₹9 lakh to ₹12 lakh? 15% tax time! But think of all the good you're doing for India!<br> 
     •	₹12 lakh to ₹15 lakh? 20% now, but your bank account is still looking healthy!<br> 
     •	Above ₹15 lakh? Woah! You're a super-rich Goshujin-sama! 30% goes to taxes, but you're still on top of the world!<br><br>
-    For your total income of ₹${totalInc}, the Total due Tax is ₹${taxesDue}
+    For your total amount of ₹${totalInc}, the Total due Tax is ₹${taxesDue}
     `
 })
 
