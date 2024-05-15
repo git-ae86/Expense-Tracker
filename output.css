@@ -731,6 +731,10 @@ video {
   margin-bottom: 1.2vh;
 }
 
+.mb-\[1\.4vh\] {
+  margin-bottom: 1.4vh;
+}
+
 .mb-\[1\.7vh\] {
   margin-bottom: 1.7vh;
 }
@@ -751,6 +755,10 @@ video {
   margin-bottom: 4vh;
 }
 
+.mb-\[5vh\] {
+  margin-bottom: 5vh;
+}
+
 .mb-\[6vh\] {
   margin-bottom: 6vh;
 }
@@ -767,20 +775,12 @@ video {
   margin-top: 2vh;
 }
 
-.mt-\[8\%\] {
-  margin-top: 8%;
-}
-
-.mb-\[1\.4vh\] {
-  margin-bottom: 1.4vh;
-}
-
-.mb-\[5vh\] {
-  margin-bottom: 5vh;
-}
-
 .mt-\[6\%\] {
   margin-top: 6%;
+}
+
+.mt-\[8\%\] {
+  margin-top: 8%;
 }
 
 .box-border {

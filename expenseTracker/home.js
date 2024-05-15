@@ -498,7 +498,7 @@ askAi.addEventListener("click",()=>{
 })
 logout.addEventListener("click",()=>{
     localStorage.removeItem("currUser");
-    window.location.href = "./docs/index.html";
+    window.location.href = "./index.html";
 })
 tax.addEventListener("click",()=>{
     let taxRate;
