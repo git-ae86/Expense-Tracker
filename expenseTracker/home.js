@@ -413,7 +413,7 @@ async function run(prompt) {
             AiKotoba.innerHTML = "Try again";
             return;
         }
-        document.getElementById("Ai").src="./images/home.gif";
+        document.getElementById("Ai").src="../images/home.gif";
         AiKotoba.innerHTML = "Thinking...";
         let userMessage = UserInp.value;
         try{
@@ -440,7 +440,7 @@ async function run(prompt) {
         conversationHistory.push({ role: "user", parts: [{ text: userMessage }] });
         UserInp.value = "";
         conversationHistory.push({ role: "model", parts: [{ text: text_ }] });
-        document.getElementById("Ai").src="./images/chat.gif";
+        document.getElementById("Ai").src="../images/chat.gif";
     }
     catch(error){
         AiKotoba.innerHTML ="Sorry please reload the website"
@@ -449,7 +449,7 @@ async function run(prompt) {
     });
     advice.addEventListener("click", async () => {
         AiKotoba.innerHTML = "Thinking...";
-        document.getElementById("Ai").src="./images/home.gif";
+        document.getElementById("Ai").src="../images/home.gif";
         let userMessage =`My total income ₹${totalInc} and my expenses are ₹${totalExp} please give me advice for money management`;
         try{
         const chat = model.startChat({
@@ -475,7 +475,7 @@ async function run(prompt) {
         conversationHistory.push({ role: "user", parts: [{ text: userMessage }] });
         UserInp.value = "";
         conversationHistory.push({ role: "model", parts: [{ text: text_ }] });
-        document.getElementById("Ai").src="./images/chat.gif";
+        document.getElementById("Ai").src="../images/chat.gif";
     }
     catch(error){
         AiKotoba.innerHTML ="Sorry please reload the website"
@@ -498,7 +498,7 @@ askAi.addEventListener("click",()=>{
 })
 logout.addEventListener("click",()=>{
     localStorage.removeItem("currUser");
-    window.location.href = "./index.html";
+    window.location.href = "../index.html";
 })
 tax.addEventListener("click",()=>{
     let taxRate;
