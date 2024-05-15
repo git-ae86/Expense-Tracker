@@ -25,7 +25,7 @@ let totalExp = 0;
 let total = 0;
 
 addbtn.addEventListener("click", () => {
-
+    document.querySelector("#cha").style.display="block";
     if (des.value == "") {
         alert("Add Some Description");
         return;
@@ -81,6 +81,7 @@ addbtn.addEventListener("click", () => {
     cro.innerHTML = "&times";
     cro.classList.add("cross")
     div.append(pType, pDes, divAmt, cro);
+    div.classList.add("rounded-md","animate__animated","animate__fadeInUp")
     hist.append(div);
 
     cro.addEventListener("click", () => {
@@ -141,36 +142,75 @@ addbtn.addEventListener("click", () => {
 
 document.addEventListener("DOMContentLoaded", propLine)
 
+// function propLine() {
+//     const canvas = document.getElementById("chartCanvas");
+//     document.getElementById("chartCanvas").innerHTML = "";
+//     document.getElementById("chartCanvas").value = "";
+//     const ctx = canvas.getContext("2d");
+
+//     pieMaker();
+//     lineMaker();
+//     barMaker();
+
+
+//     // Data (in percentage)
+//     const x = (totalInc * 100) / (totalInc + totalExp);
+//     const y = (totalExp * 100) / (totalInc + totalExp);
+
+//     // Colors
+//     const redColor = "#FF0000";
+
+//     // Calculate bar lengths
+//     const totalWidth = canvas.width;
+//     const xBarWidth = (x / 100) * totalWidth;
+//     const yBarWidth = (y / 100) * totalWidth;
+
+//     // Draw bars
+//     ctx.fillStyle = "#32CD32";
+//     ctx.fillRect(0, 0, xBarWidth, canvas.height);
+
+//     ctx.fillStyle = redColor;
+//     ctx.fillRect(xBarWidth, 0, yBarWidth, canvas.height);
+//     // ctx.clearRect(0, 0, canvas.width, canvas.height);
+// }
+
 function propLine() {
     const canvas = document.getElementById("chartCanvas");
     document.getElementById("chartCanvas").innerHTML = "";
     document.getElementById("chartCanvas").value = "";
     const ctx = canvas.getContext("2d");
 
-    pieMaker();
-    lineMaker();
-    barMaker();
-
-
-    // Data (in percentage)
     const x = (totalInc * 100) / (totalInc + totalExp);
     const y = (totalExp * 100) / (totalInc + totalExp);
 
-    // Colors
     const redColor = "#FF0000";
 
-    // Calculate bar lengths
     const totalWidth = canvas.width;
     const xBarWidth = (x / 100) * totalWidth;
     const yBarWidth = (y / 100) * totalWidth;
+    let currentX = 0;
+    let currentY = 0;
+    const animationSpeed = 33; 
 
-    // Draw bars
-    ctx.fillStyle = "#32CD32";
-    ctx.fillRect(0, 0, xBarWidth, canvas.height);
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    ctx.fillStyle = redColor;
-    ctx.fillRect(xBarWidth, 0, yBarWidth, canvas.height);
-    // ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#32CD32";
+        ctx.fillRect(0, 0, currentX, canvas.height);
+
+        ctx.fillStyle = redColor;
+        ctx.fillRect(currentX, 0, currentY, canvas.height);
+
+        if (currentX < xBarWidth || currentY < yBarWidth) {
+            currentX += (xBarWidth - currentX) / animationSpeed;
+            currentY += (yBarWidth - currentY) / animationSpeed;
+            requestAnimationFrame(draw);
+        }
+    }
+    pieMaker();
+    lineMaker();
+    barMaker();
+    draw();
 }
 
 
@@ -246,18 +286,35 @@ function lineMaker() {
     });
 }
 function barMaker() {
+    let labl;
+    let labldata;
+    let lablcol;
     if (Chartt2 != undefined) {
-        // Destroy the existing chart instance
-        Chartt2.destroy();
+        // Chartt2.destroy();
+        addDataBar()
+        return;
+    }
+    if(income.length==0 && expense.length==0){
+        return;
+    }
+    if(type.value=="income"){
+        labl="Income";
+        labldata=income[0];
+        lablcol=barColors[0];
+    }
+    else{
+        labl="Expense";
+        labldata=expense[0];
+        lablcol=barColors[1];
     }
     Chartt2 = new Chart("bar", {
 
         type: "bar",
         data: {
-            labels: ["Income", "Expense"],
+            labels: [labl],
             datasets: [{
-                backgroundColor: barColors,
-                data: [totalInc, totalExp]
+                backgroundColor:[lablcol],
+                data: [labldata]
             }]
         },
         options: {
@@ -276,6 +333,19 @@ function barMaker() {
             },
         }
     });
+}
+function addDataBar() {
+    if(type.value=="income"){
+    Chartt2.data.labels.push("Income" );
+    Chartt2.data.datasets[0].backgroundColor.push("#32CD32");
+    Chartt2.data.datasets[0].data.push(income[income.length-1]);
+    }
+    else{
+    Chartt2.data.labels.push("Expense" );
+    Chartt2.data.datasets[0].backgroundColor.push("#FF0000");
+    Chartt2.data.datasets[0].data.push(expense[expense.length-1]);
+    }
+    Chartt2.update();
 }
 
 const askAi=document.querySelector("#AskAi");
@@ -343,7 +413,7 @@ async function run(prompt) {
             AiKotoba.innerHTML = "Try again";
             return;
         }
-        document.getElementById("Ai").src="../images/home.gif";
+        document.getElementById("Ai").src="./images/home.gif";
         AiKotoba.innerHTML = "Thinking...";
         let userMessage = UserInp.value;
         try{
@@ -370,7 +440,7 @@ async function run(prompt) {
         conversationHistory.push({ role: "user", parts: [{ text: userMessage }] });
         UserInp.value = "";
         conversationHistory.push({ role: "model", parts: [{ text: text_ }] });
-        document.getElementById("Ai").src="../images/chat.gif";
+        document.getElementById("Ai").src="./images/chat.gif";
     }
     catch(error){
         AiKotoba.innerHTML ="Sorry please reload the website"
@@ -379,7 +449,7 @@ async function run(prompt) {
     });
     advice.addEventListener("click", async () => {
         AiKotoba.innerHTML = "Thinking...";
-        document.getElementById("Ai").src="../images/home.gif";
+        document.getElementById("Ai").src="./images/home.gif";
         let userMessage =`My total income ₹${totalInc} and my expenses are ₹${totalExp} please give me advice for money management`;
         try{
         const chat = model.startChat({
@@ -405,7 +475,7 @@ async function run(prompt) {
         conversationHistory.push({ role: "user", parts: [{ text: userMessage }] });
         UserInp.value = "";
         conversationHistory.push({ role: "model", parts: [{ text: text_ }] });
-        document.getElementById("Ai").src="../images/chat.gif";
+        document.getElementById("Ai").src="./images/chat.gif";
     }
     catch(error){
         AiKotoba.innerHTML ="Sorry please reload the website"
@@ -428,7 +498,7 @@ askAi.addEventListener("click",()=>{
 })
 logout.addEventListener("click",()=>{
     localStorage.removeItem("currUser");
-    window.location.href = "../docs/index.html";
+    window.location.href = "./docs/index.html";
 })
 tax.addEventListener("click",()=>{
     let taxRate;
@@ -458,7 +528,7 @@ tax.addEventListener("click",()=>{
     •	₹9 lakh to ₹12 lakh? 15% tax time! But think of all the good you're doing for India!<br> 
     •	₹12 lakh to ₹15 lakh? 20% now, but your bank account is still looking healthy!<br> 
     •	Above ₹15 lakh? Woah! You're a super-rich Goshujin-sama! 30% goes to taxes, but you're still on top of the world!<br><br>
-    For your total amount of ₹${totalInc}, the Total due Tax is ₹${taxesDue}
+    For your total amount of ₹${totalInc}, the total due tax is ₹${taxesDue}
     `
 })
 

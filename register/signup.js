@@ -69,5 +69,5 @@ signup.addEventListener('click', () =>{
 
 
 login.addEventListener('click', () => {
-    window.location.href = "../docs/index.html";
+    window.location.href = "./docs/index.html";
 })

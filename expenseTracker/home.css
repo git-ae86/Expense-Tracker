@@ -36,7 +36,7 @@ input,select{
 }
 
 .hover-button:hover {
-    background-color: #45a049; /* Darker Green */
+    background-color: #3a8a3e; /* Darker Green */
 }
 .hover-button1 {
     background-color: #afad4c; /* Green */
@@ -52,7 +52,23 @@ input,select{
 }
 
 .hover-button1:hover {
-    background-color: #6b6e2b; /* Darker Green */
+    background-color: #6b6f2a; 
+}
+.hover-button3 {
+    background-color: #001c70;
+    border: none;
+    padding: 1vh;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.hover-button3:hover,#advice:hover {
+    background-color: #051649; 
 }
 #chartCanvas {
     border: 1px solid #ccc;

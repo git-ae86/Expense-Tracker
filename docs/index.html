@@ -4,88 +4,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expense Tracker</title>
+    <link href="./output.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            background-color: #1d2a35;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+        }
+
+        main {
+            height: 90vh;
+            width: 85vw;
+            background: #193d3d;
+            display: flex;
+            font-size: large;
+            font-weight: 500;
+            color: white;
+        }
+
+        main .form {
+            padding-top: 7%;
+            width: 55%;
+        }
+
+        main .pic {
+            width: 45%;
+        }
+
+        main .pic img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .Btns {
+            margin-top: 25px;
+            display: flex;
+            margin-right: 140px;
+            justify-content: space-around;
+        }
+
+        .Btn {
+            background-color: #49bda3;
+            color: white;
+            border: none;
+            height: 40px;
+            width: 120px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .Btn:hover {
+            cursor: pointer;
+            background-color: #3f9f8a;
+            transition: 0.3s ease;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <title>Expense Tracker AI</title>
 </head>
-<link href="../output.css" rel="stylesheet">
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body {
-        display: flex;
-        background-color: #d3cece;
-        height: 100vh;
-        align-items: center;
-        justify-content: center;
-    }
-
-    main {
-        height: 90vh;
-        width: 85vw;
-        background: white;
-        display: flex;
-        font-size: large;
-        font-weight: 500;
-    }
-
-    main .form {
-        padding-top: 7%;
-        width: 55%;
-    }
-
-    main .pic {
-        width: 45%;
-    }
-
-    main .pic img {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-    }
-    .Btns{
-    margin-top: 25px;
-    display: flex;
-    margin-right: 140px;
-    justify-content: space-around;
-}
-
-.Btn{
-    background-color:#49bda3;
-    color: white;
-    border: none;
-    height: 40px;
-    width: 120px;
-    border-radius: 5px;
-    font-size: 14px;
-    cursor: pointer;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.Btn:hover{
-    cursor: pointer;
-    background-color:#3f9f8a;
-    transition: 0.3s ease;
-}
-</style>
 
 <body>
-    <main>
+    <main class="rounded-lg animate__animated animate__zoomIn">
         <div class="form">
-            <h1 class="text-center text-[3rem] mb-[2vh] font-semibold">Expense Tracker</h1>
+            <h1 class="text-center text-[3rem] mb-[2vh] font-semibold">Expense Tracker AI</h1>
             <h2 class="text-center text-[2rem] mb-[6vh]">Login</h2>
             <div class="ml-[20%] mb-[2vh]">
                 <label for="mail">Email</label><br>
-                <input type="email" name="email" id="mail" class="inputElements border border-[#aeb4b2] w-[80%]">
+                <input type="email" name="email" id="mail"
+                    class="inputElements border rounded-lg border-[#aeb4b2] p-[0.5vh] text-[black] w-[80%]">
                 <br>
             </div>
 
             <div class="ml-[20%]">
                 <label for="pass">Password</label><br>
-                <input type="password" name="password" id="pass" class="inputElements border border-[#aeb4b2] w-[80%]">
+                <input type="password" name="password" id="pass"
+                    class="inputElements rounded-lg border p-[0.5vh] text-[black] border-[#aeb4b2] w-[80%]">
                 <br>
             </div>
 
@@ -95,8 +100,8 @@
                 <input type="button" value="Sign Up" id="signUp" class="Btn">
             </div>
         </div>
-        <div class="pic">
-            <img src="../images/authencation.jpeg" alt="">
+        <div class="pic rounded-r-md">
+            <img src="./images/authencation.jpeg" class="rounded-r-md" alt="">
         </div>
 
         <script src="index.js"></script>

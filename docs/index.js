@@ -33,7 +33,7 @@ login.addEventListener("click",() => {
           alert('Logged in successfully');
           current = JSON.stringify(current);
           localStorage.setItem("currUser", current);
-          window.location.href = "../expenseTracker/home.html";
+          window.location.href = "./expenseTracker/home.html";
       } else {
             alert("wrong password or username")
           return;
@@ -44,5 +44,5 @@ login.addEventListener("click",() => {
 })
 
 signup.addEventListener('click', () => {
-  window.location.href = "../register/signup.html";
+  window.location.href = "./register/signup.html";
 })

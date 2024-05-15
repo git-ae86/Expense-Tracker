@@ -4,14 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../output.css" rel="stylesheet">
+    <link href="./output.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="./expenseTracker/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <style>
         .pop {
             display: none;
@@ -34,11 +35,16 @@
             color: white;
         }
 
-        #AiChat::-webkit-scrollbar,#AiChat2::-webkit-scrollbar {
+        #AiChat::-webkit-scrollbar,
+        #AiChat2::-webkit-scrollbar,
+        .history::-webkit-scrollbar,
+        body::-webkit-scrollbar {
             display: none;
         }
 
-        #AiChat,#AiChat2 {
+        #AiChat,
+        #AiChat2,
+        .history {
             -ms-overflow-style: none;
             /* IE and Edge */
             scrollbar-width: none;
@@ -72,7 +78,7 @@
 
 <body>
     <script src="https://js.instamojo.com/v1/checkout.js"></script>
-    
+
     <script>
         /* Start client-defined Callback Handler Functions */
         function onOpenHandler() {
@@ -108,27 +114,27 @@
             Instamojo.open('https://test.instamojo.com/@satan999/');
         }
     </script>
-    <nav class="flex justify-around p-[1vh] text-lg fixed top-0 w-[100%] bg-[#282a35] text-[#cbd7dd]" style="z-index:2">
+    <nav class="animate__animated animate__bounceInUp flex justify-around p-[1vh] text-lg fixed top-0 w-[100%] bg-[#282a35] text-[#cbd7dd]" style="z-index:2">
         <button class="hv"><a href="#here">Charts</a></button>
         <!-- <a  href="#here" class="hv" id="chartMaker">Chart</a> -->
         <button class="hv"><i class="fa-solid fa-house"></i><a href="#beginning">Home</a> </button>
         <div class="hv" id="AskAi">
             <div class="img h-[9vh] w-[4.6vw] rounded-full bg-gray-700">
-                <img src="../images/normal.jpg" alt="" class="h-[100%] w-[100%] rounded-full object-cover">
+                <img src="./images/normal.jpg" alt="" class="h-[100%] w-[100%] rounded-full object-cover">
             </div>
             <p class="text-xs text-center">Ask AI</p>
         </div>
         <button class="hv" id="outer">LogOut</button>
     </nav>
     <div id="beginning" style="position: absolute; top:0;z-index: -1;"></div>
-    <div class="pop">
+    <div class="pop animate__animated animate__fadeInRightBig">
         <div class="modal-content p-[3vh]">
             <div class="flex">
-                <div id="AiImg" class="pic h-[15vh] w-[9.5vw] rounded-full m-[1vw]">
-                    <img src="../images/chat.gif" alt="" class="w-[100%] h-[100%] rounded-full " id="Ai">
+                <div id="AiImg" class="h-[15vh] w-[9.5vw] rounded-full m-[1vw]">
+                    <img src="./images/chat.gif" alt="" class=" w-[100%] h-[100%] rounded-full " id="Ai">
                 </div>
                 <div id="AiChat"
-                    class="bg-zinc-900 text-white w-[100%] p-[1vh]  rounded-lg h-[46vh] mb-[4vh] overflow-y-scroll">
+                    class="animate__animated animate__fadeIn bg-zinc-900 text-white w-[100%] p-[1vh]  rounded-lg h-[46vh] mb-[4vh] overflow-y-scroll">
                 </div>
             </div>
             <div class="flex">
@@ -138,64 +144,65 @@
                 <br>
             </div>
             <div class="flex justify-around">
-                <button id="send" class="p-[1vh] border m-[1vh]">Send</button>
-                <button id="close" class="p-[1vh] border m-[1vh]">Close</button>
+                <button id="send" class="hover-button3 p-[1vh] border m-[1vh]">Send</button>
+                <button id="close" class="hover-button3 p-[1vh] border m-[1vh]">Close</button>
             </div>
         </div>
     </div>
-    <div class="pop2">
+    <div class="pop2 animate__animated animate__fadeInLeftBig">
         <div class="modal-content2 p-[3vh]">
             <div class="flex">
-                <div id="AiImg2" class="pic h-[15vh] w-[9.5vw] rounded-full m-[1vw]"><img src="../images/tax.gif" alt=""
+                <div id="AiImg2" class="pic h-[15vh] w-[9.5vw] rounded-full m-[1vw]"><img src="./images/tax.gif" alt=""
                         class="w-[100%] h-[100%] rounded-full"></div>
                 <div id="AiChat2"
                     class="bg-zinc-900 text-white w-[100%] p-[1vh]  rounded-lg h-[46vh] mb-[4vh] overflow-y-scroll">
                 </div>
             </div>
             <div class="flex justify-around">
-                <button id="send2" class="p-[1vh] border m-[1vh]" onclick="onButtonClick()">Pay</button>
-                <button id="close2" class="p-[1vh] border m-[1vh]">Close</button>
+                <button id="send2" class="hover-button3 p-[1vh] border m-[1vh]" onclick="onButtonClick()">Pay</button>
+                <button id="close2" class="hover-button3 p-[1vh] border m-[1vh]">Close</button>
             </div>
         </div>
     </div>
-    <main class="pt-[24vh] px-[8vw]  bg-[#2b4256]">
 
-        <div class=" h-[14vh] w-[100%] mb-[3vh]">
-            <p class="mb-[1.2vh] text-xl">Net Balance</p>
+    <main class="pt-[24vh] px-[8vw] bg-[#2b4256] border  ">
+
+        <div class=" h-[14vh] w-[100%] mb-[3vh] text-[white]">
+            <p class="animate__animated animate__backInLeft mb-[1.2vh] text-xl">Net Balance</p>
             <div class="flex justify-between">
-                <p class="text-5xl" id="bal">₹0</p>
-                <canvas id="chartCanvas" width="800" height="10"></canvas>
+                <p class="animate__animated animate__backInLeft text-5xl" id="bal">₹0</p>
+                <canvas id="chartCanvas" width="800" height="10" class="animate__animated animate__backInRight"></canvas>
             </div>
         </div>
 
-        <div class="dashB flex justify-around mb-[3vh]">
+        <div class="animate__animated animate__flash dashB flex justify-around mb-[3vh]">
             <div class="income  rounded-md p-[1vh]">
-                <p class="text-[green]">Income</p>
-                <p class="text-xl" id="inc">₹0</p>
+                <p class="text-[#40bd40] text-xl">Income</p>
+                <p class="text-2xl text-[#40bd40]" id="inc">₹0</p>
             </div>
-            <div class="expenses rounded-md p-[1vh]">
+            <div class="expenses rounded-md p-[1vh] text-xl">
                 <p class="text-[red]">Expenses</p>
-                <p class="text-xl" id="exp">₹0</p>
+                <p class="text-2xl text-[red]" id="exp">₹0</p>
             </div>
+            <div><button class="hover-button1" id="taxer">Check Tax</button></div>
 
-            <button class="hover-button1" id="taxer">Check Tax</button>
         </div>
 
-        <p class="text-2xl">Transactions</p>
-        <div class="inputer flex justify-between mb-[2vh]">
+        <p class="text-2xl text-[white]">Transactions</p>
+        <div class="animate__animated animate__bounce inputer flex justify-between mb-[2vh]">
             <p class="text-[gray]" id="trans">You had 0 incomes and 0 expenses </p>
             <div class="type">
-                <label for="type:">Type</label>
+                <label for="type:" class="text-white">Type</label>
                 <select name="type" id="type" class="border">
                     <option value="income">Income</option>
                     <option value="expense">Expense</option>
                 </select>
             </div>
-            <input type="text" placeholder="Description" id="des" class="border w-[18vw]">
+            <input type="text" placeholder="Description" id="des" class="border w-[18vw] pl-[1vh]">
             <input type="number" placeholder="Amount" id="amt" class="border pl-[1vh] w-[10vw]">
             <button class="hover-button" id="add">+ Add</button>
         </div>
-        <div class="history h-[60vh] mb-[3vh] bg-[#193d3d] p-[2vh]">
+        <div class="animate__animated animate__bounceInRight history h-[60vh] mb-[3vh] bg-[#193d3d] rounded-lg p-[2vh]">
             <!-- <div class="border-2 border-lime-400 bg-[white] flex justify-between px-[2vw] m-[1vh]">
                 <div>income</div>
                 <div>category</div>
@@ -215,16 +222,16 @@
                 <button>&times</button>
             </div> -->
         </div>
-        <div id="here"></div>
-        <div id="cha" class="bg-gray-700 mb-[4vh] p-[1vh] mt-[2vh]">
-            <div class="chart-container" style="position: relative; height:40vh; width:80vw">
+        <div id="here" class="mb-[16vh]"></div>
+        <div id="cha" class="bg-gray-700 mb-[4vh] p-[1vh] mt-[2vh] hidden">
+            <div class="chart-container mb-[4vh]" style="position: relative; height:40vh; width:80vw">
                 <canvas id="pie"></canvas>
             </div>
 
-            <div class="chart-container" style="position: relative; height:40vh; width:80vw">
+            <div class="chart-container mb-[4vh]" style="position: relative; height:40vh; width:80vw">
                 <canvas id="line"></canvas>
             </div>
-            <div class="chart-container" style="position: relative; height:40vh; width:80vw">
+            <div class="chart-container mb-[4vh]" style="position: relative; height:40vh; width:80vw">
                 <canvas id="bar"></canvas>
             </div>
         </div>
