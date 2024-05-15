@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="../output.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -32,6 +32,17 @@
             width: 90%;
             height: 80%;
             color: white;
+        }
+
+        #AiChat::-webkit-scrollbar,#AiChat2::-webkit-scrollbar {
+            display: none;
+        }
+
+        #AiChat,#AiChat2 {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
         }
 
         .pop2 {
@@ -112,8 +123,9 @@
     <div class="pop">
         <div class="modal-content p-[3vh]">
             <div class="flex">
-                <div id="AiImg" class="pic h-[15vh] w-[9.5vw] rounded-full m-[1vw]"><img src="../images/home.gif" alt=""
-                        class="w-[100%] h-[100%] rounded-full"></div>
+                <div id="AiImg" class="pic h-[15vh] w-[9.5vw] rounded-full m-[1vw]">
+                    <img src="../images/chat.gif" alt="" class="w-[100%] h-[100%] rounded-full " id="Ai">
+                </div>
                 <div id="AiChat"
                     class="bg-zinc-900 text-white w-[100%] p-[1vh]  rounded-lg h-[46vh] mb-[4vh] overflow-y-scroll">
                 </div>

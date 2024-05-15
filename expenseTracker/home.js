@@ -340,6 +340,7 @@ async function run(prompt) {
         if (UserInp.value.length < 4) {
             return;
         }
+        document.getElementById("Ai").src="../images/home.gif";
         AiKotoba.innerHTML = "Thinking...";
         let userMessage = UserInp.value;
         try{
@@ -366,6 +367,7 @@ async function run(prompt) {
         conversationHistory.push({ role: "user", parts: [{ text: userMessage }] });
         UserInp.value = "";
         conversationHistory.push({ role: "model", parts: [{ text: text_ }] });
+        document.getElementById("Ai").src="../images/chat.gif";
     }
     catch(error){
         AiKotoba.innerHTML ="Sorry please reload the website"
