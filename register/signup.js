@@ -63,6 +63,7 @@ signup.addEventListener('click', () =>{
     document.querySelector("input[name='email']").value="";
     document.querySelector("input[name='password']").value="";
     document.querySelector("input[name='cpassword']").value="";
+    window.location.href = "../index.html";
 }
 )
 

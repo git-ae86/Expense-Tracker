@@ -22,7 +22,6 @@
 
         main {
             height: 90vh;
-            width: 85vw;
             background: #193d3d;
             display: flex;
             font-size: large;
@@ -76,10 +75,10 @@
 </head>
 
 <body>
-    <main class="rounded-lg animate__animated animate__zoomIn">
+    <main class="rounded-lg animate__animated animate__zoomIn 94vw lg:w-[85vw]">
         <div class="form">
-            <h1 class="text-center text-[3rem] mb-[2vh] font-semibold">Expense Tracker AI</h1>
-            <h2 class="text-center text-[2rem] mb-[6vh]">Login</h2>
+            <h1 class="text-center text-[2rem] lg:text-[3rem] mb-[2vh] font-semibold">Expense Tracker AI</h1>
+            <h2 class="text-center text-[1.6rem] lg:text-[2rem] mb-[6vh]">Login</h2>
             <div class="ml-[20%] mb-[2vh]">
                 <label for="mail">Email</label><br>
                 <input type="email" name="email" id="mail"
@@ -96,7 +95,7 @@
 
 
             <div class="Btns ml-[20%] mt-[8%]">
-                <input type="button" value="Login" id="signIn" class="Btn">
+                <input type="button" value="Login" id="signIn" class="Btn mr-[9vw] xl:mr-[0]">
                 <input type="button" value="Sign Up" id="signUp" class="Btn">
             </div>
         </div>

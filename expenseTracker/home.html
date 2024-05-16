@@ -38,7 +38,7 @@
         #AiChat::-webkit-scrollbar,
         #AiChat2::-webkit-scrollbar,
         .history::-webkit-scrollbar,
-        body::-webkit-scrollbar {
+        body::-webkit-scrollbar,#advice::-webkit-scrollbar {
             display: none;
         }
 
@@ -127,8 +127,8 @@
         <button class="hv" id="outer">LogOut</button>
     </nav>
     <div id="beginning" style="position: absolute; top:0;z-index: -1;"></div>
-    <div class="pop animate__animated animate__fadeInRightBig">
-        <div class="modal-content p-[3vh]">
+    <div class="pop animate__animated animate__fadeInRightBig ">
+        <div class="modal-content p-[3vh] sm:w-[98%] md:w-[95%] lg:w-[90%] h-[80%]">
             <div class="flex">
                 <div id="AiImg" class="h-[15vh] w-[9.5vw] rounded-full m-[1vw]">
                     <img src="../images/chat.gif" alt="" class=" w-[100%] h-[100%] rounded-full " id="Ai">
@@ -138,7 +138,7 @@
                 </div>
             </div>
             <div class="flex">
-                <button id="advice" class="w-[13%] p-[1vh] border m-[1vh] bg-[#001861] rounded-lg">Send income/expense
+                <button id="advice" class="w-[13%] p-[1vh] border m-[1vh] bg-[#001861] rounded-lg sm:text-xs sm:overflow-y-scroll md:text-sm lg:text-sm xl:text-base">Send income/expense
                     data to get financial advice</button>
                 <textarea id="AiInput" cols="10" rows="4" class="w-[100%] rounded-xl text-black p-[1vh]"></textarea>
                 <br>
@@ -165,13 +165,13 @@
         </div>
     </div>
 
-    <main class="pt-[24vh] px-[8vw] bg-[#2b4256] border  ">
+    <main class="pt-[24vh] sm:px-[2vw] md:px-[4vw] lg:px-[8vw] bg-[#2b4256] border  ">
 
         <div class=" h-[14vh] w-[100%] mb-[3vh] text-[white]">
             <p class="animate__animated animate__backInLeft mb-[1.2vh] text-xl">Net Balance</p>
             <div class="flex justify-between">
                 <p class="animate__animated animate__backInLeft text-5xl" id="bal">₹0</p>
-                <canvas id="chartCanvas" width="800" height="10" class="animate__animated animate__backInRight"></canvas>
+                <canvas id="chartCanvas" width="800" height="10" class="animate__animated animate__backInRight w-[45vw] md:w-[45vw] lg:w-[47vw;] xl:w-[58vw]"></canvas>
             </div>
         </div>
 
@@ -189,8 +189,8 @@
         </div>
 
         <p class="text-2xl text-[white]">Transactions</p>
-        <div class="animate__animated animate__bounce inputer flex justify-between mb-[2vh]">
-            <p class="text-[gray]" id="trans">You had 0 incomes and 0 expenses </p>
+        <div class="animate__animated animate__bounce inputer md:block lg:flex lg:justify-between mb-[2vh] sticky top-[17vh] z-[1]">
+            <p class="text-[gray] " id="trans">You had 0 incomes and 0 expenses </p>
             <div class="type">
                 <label for="type:" class="text-white">Type</label>
                 <select name="type" id="type" class="border">
@@ -198,8 +198,8 @@
                     <option value="expense">Expense</option>
                 </select>
             </div>
-            <input type="text" placeholder="Description" id="des" class="border w-[18vw] pl-[1vh]">
-            <input type="number" placeholder="Amount" id="amt" class="border pl-[1vh] w-[10vw]">
+            <input type="text" placeholder="Description" id="des" class="border md-[] md:w-[40vw] lg:w-[18vw] pl-[1vh] max-[1022px]:mr-[10vw]">
+            <input type="number" placeholder="Amount" id="amt" class="border pl-[1vh] md:w-[20vw] lg:w-[10vw]  max-[1022px]:mr-[10vw]">
             <button class="hover-button" id="add">+ Add</button>
         </div>
         <div class="animate__animated animate__bounceInRight history h-[60vh] mb-[3vh] bg-[#193d3d] rounded-lg p-[2vh]">

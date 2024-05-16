@@ -20,12 +20,8 @@
         }
 
         main {
-            height: 90vh;
-            width: 85vw;
             background: #193d3d;
-            display: flex;
-            font-size: large;
-            font-weight: 500;
+            
             color: white;
         }
 
@@ -81,11 +77,11 @@
 
 
 <body>
-    <main class="rounded-lg animate__animated animate__zoomIn">
+    <main class="rounded-lg animate__animated animate__zoomIn flex sm:flex md:flex lg:flex lg:h-[90vh] xl:h-[90vh] xl:w-[85vw] xl:font-medium xl:text-lg xl:flex">
         <div class="form">
             <form>
-                <h1 class="text-center text-[2.5rem] mb-[2vh] font-semibold">Expense Tracker AI</h1>
-                <h2 class="text-center text-[2rem] mb-[5vh]">Sign Up</h2>
+                <h1 class="text-center text-[2.5rem]  md:mb-[10px] mb-[2vh] font-semibold">Expense Tracker AI</h1>
+                <h2 class="text-center md:text-[1.6rem] text-[2rem] md:mb-[2vh] mb-[5vh]">Sign Up</h2>
                 <div class="ml-[20%] mb-[1.4vh]">
                     <label for="fname">First Name</label><br>
                     <input type="text" name="fname" id="fname" required
@@ -120,7 +116,7 @@
                 </div>
 
                 <div class="Btns ml-[20%] mt-[6%]">
-                    <input type="button" value="REGISTER" id="reg" class="Btn">
+                    <input type="button" value="REGISTER" id="reg" class="Btn mr-[9vw] sm:mr-[9vw] md:mr-[7vw] lg:mr-[8vw]">
                     <input type="button" value="LOGIN" id="login" class="Btn">
                 </div>
             </form>
