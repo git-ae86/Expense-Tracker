@@ -27,6 +27,7 @@ login.addEventListener("click",() => {
   }
 
   let current;
+  let flag=true;
   data.some(ele => {
       if (ele.mail == email && ele.pass == password) {
           current = ele;
@@ -34,12 +35,16 @@ login.addEventListener("click",() => {
           current = JSON.stringify(current);
           localStorage.setItem("currUser", current);
           window.location.href = "./expenseTracker/home.html";
-      } else {
-            alert("wrong password or username")
+          flag=false
           return;
-      }
+      } 
 
   });
+  if(flag){
+    alert("wrong password or username")
+    return;
+  }
+
 
 })
 
