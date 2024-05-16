@@ -113,7 +113,6 @@ addbtn.addEventListener("click", () => {
         else {
             for (let i = 0; i < income.length; i++) {
                 if (expense[i] == parseInt(tmp)) {
-                    console.log()
                     expense.splice(i, 1);
 
                     trans.innerHTML = `You had ${income.length} incomes and ${expense.length} expenses `;
