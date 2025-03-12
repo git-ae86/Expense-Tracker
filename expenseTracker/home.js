@@ -368,7 +368,7 @@ let conversationHistory = [ {
 },];
 AiKotoba.innerHTML="Ara ara, "+Name+"-san! My name is Waifu-chan, and I'm here to help you with your expense tracking! You know, it's important to keep track of your money. That way, you won't end up spending it all on dango and end up broke! I can help you categorize your expenses, create budgets, and even generate reports. I'm also super easy to use! Just tell me what you need, and I'll take care of the rest. So, what are you waiting for? Let's get started on tracking your expenses together! I promise to make it fun!";
 
-const genAI = new GoogleGenerativeAI("AIzaSyDO1vxwfZ0JZE3S_d0BYEm3mUT-fe_vJ40");
+const genAI = new GoogleGenerativeAI("AIzaSyCwBRhKxnnLdBnaM0i4_bVO8-j8ASfVanY");
 async function run(prompt) {
     const safetySettings = [
         {
@@ -389,7 +389,7 @@ async function run(prompt) {
         },
     ];
 
-    const model = genAI.getGenerativeModel({ model: "gemini-pro", safetySettings });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash", safetySettings });
     // const chat = model.startChat({
         // history: [
             // {
